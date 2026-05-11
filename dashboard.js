@@ -483,19 +483,14 @@ document.addEventListener('DOMContentLoaded', async function() {
         const { data, error } = await supabase
             .from('tasks')
             .upsert(taskWithUser)
-            .select()
-            .single();
+            .select();
         
         if (error) {
             console.error('Error saving task:', error);
-        } else {
-            // Update local array
-            const index = tasks.findIndex(t => t.id === data.id);
-            if (index >= 0) {
-                tasks[index] = data;
-            } else {
-                tasks.push(data);
-            }
+        } else if (data && data.length > 0) {
+            const savedTask = data[0];
+            // Update the original task object with saved data (including UUID)
+            Object.assign(task, savedTask);
             // Update cache
             localStorage.setItem('grevillea_tasks', JSON.stringify(tasks));
         }
@@ -807,21 +802,22 @@ document.addEventListener('DOMContentLoaded', async function() {
         }
         
         const noteWithUser = { ...note, user_id: user.id };
+        const isNew = !note.id;
         
         const { data, error } = await supabase
             .from('notes')
             .upsert(noteWithUser)
-            .select()
-            .single();
+            .select();
         
         if (error) {
             console.error('Error saving note:', error);
-        } else {
-            const index = notes.findIndex(n => n.id === data.id);
-            if (index >= 0) {
-                notes[index] = data;
-            } else {
-                notes.push(data);
+        } else if (data && data.length > 0) {
+            const savedNote = data[0];
+            // Update the original note object with the saved data (including UUID)
+            Object.assign(note, savedNote);
+            
+            if (isNew) {
+                currentNoteId = savedNote.id;
             }
             localStorage.setItem('grevillea_notes', JSON.stringify(notes));
             updateNotesCount();
@@ -960,7 +956,6 @@ document.addEventListener('DOMContentLoaded', async function() {
     
     async function createNewNote() {
         const newNote = {
-            id: Date.now().toString(),
             title: '',
             category: '',
             content: '',
@@ -968,8 +963,8 @@ document.addEventListener('DOMContentLoaded', async function() {
             updatedat: new Date().toISOString()
         };
         
-        notes.push(newNote);
         await saveNote(newNote);
+        notes.push(newNote);
         renderNotesList();
         loadNote(newNote.id);
         
