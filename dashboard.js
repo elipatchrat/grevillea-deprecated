@@ -445,7 +445,7 @@ document.addEventListener('DOMContentLoaded', async function() {
             .from('tasks')
             .select('*')
             .eq('user_id', user.id)
-            .order('createdAt', { ascending: true });
+            .order('createdat', { ascending: true });
         
         if (error) {
             console.error('Error loading tasks:', error);
@@ -636,7 +636,7 @@ document.addEventListener('DOMContentLoaded', async function() {
             completed: false,
             tag: 'General',
             date: taskDate,
-            createdAt: new Date().toISOString()
+            createdat: new Date().toISOString()
         };
         
         tasks.push(newTask);
@@ -774,7 +774,7 @@ document.addEventListener('DOMContentLoaded', async function() {
             .from('notes')
             .select('*')
             .eq('user_id', user.id)
-            .order('createdAt', { ascending: true });
+            .order('createdat', { ascending: true });
         
         if (error) {
             console.error('Error loading notes:', error);
@@ -880,7 +880,7 @@ document.addEventListener('DOMContentLoaded', async function() {
                                 <button class="note-item-expand" data-id="${note.id}">${isExpanded ? '▲' : '▼'}</button>
                             </div>
                             <div class="note-item-preview">${escapeHtml(preview)}</div>
-                            <div class="note-item-date">${formatNoteDate(note.updatedAt || note.createdAt)}</div>
+                            <div class="note-item-date">${formatNoteDate(note.updatedat || note.createdat)}</div>
                         </div>
                     `;
                 }).join('');
@@ -952,7 +952,7 @@ document.addEventListener('DOMContentLoaded', async function() {
         
         if (titleInput) titleInput.value = note.title || '';
         if (categoryInput) categoryInput.value = note.category || '';
-        if (dateSpan) dateSpan.textContent = 'Last edited: ' + formatNoteDate(note.updatedAt || note.createdAt);
+        if (dateSpan) dateSpan.textContent = 'Last edited: ' + formatNoteDate(note.updatedat || note.createdat);
         if (contentTextarea) contentTextarea.value = note.content || '';
         
         renderNotesList(); // Update active state
@@ -964,8 +964,8 @@ document.addEventListener('DOMContentLoaded', async function() {
             title: '',
             category: '',
             content: '',
-            createdAt: new Date().toISOString(),
-            updatedAt: new Date().toISOString()
+            createdat: new Date().toISOString(),
+            updatedat: new Date().toISOString()
         };
         
         notes.push(newNote);
@@ -990,7 +990,7 @@ document.addEventListener('DOMContentLoaded', async function() {
             note.title = titleInput ? titleInput.value : '';
             note.category = categoryInput ? categoryInput.value : '';
             note.content = contentTextarea ? contentTextarea.value : '';
-            note.updatedAt = new Date().toISOString();
+            note.updatedat = new Date().toISOString();
             
             await saveNote(note);
             renderNotesList();

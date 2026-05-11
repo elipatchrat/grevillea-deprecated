@@ -1,4 +1,4 @@
-// SQL Schema (camelCase columns to match code):
+// SQL Schema (lowercase columns - PostgreSQL folds camelCase):
 // -- Profiles table
 // create table profiles (
 //   id uuid default gen_random_uuid() primary key,
@@ -17,7 +17,7 @@
 // create policy "Users can insert their own profile" on profiles for insert with check (auth.uid() = user_id);
 // create policy "Users can update their own profile" on profiles for update using (auth.uid() = user_id);
 //
-// -- Tasks table (camelCase to match code)
+// -- Tasks table
 // create table tasks (
 //   id uuid default gen_random_uuid() primary key,
 //   user_id uuid references auth.users(id) on delete cascade,
@@ -25,8 +25,8 @@
 //   completed boolean default false,
 //   tag text default 'General',
 //   date text,
-//   createdAt timestamptz default now(),
-//   updatedAt timestamptz default now()
+//   createdat timestamptz default now(),
+//   updatedat timestamptz default now()
 // );
 // alter table tasks enable row level security;
 // create policy "Users can select their own tasks" on tasks for select using (auth.uid() = user_id);
@@ -34,15 +34,15 @@
 // create policy "Users can update their own tasks" on tasks for update using (auth.uid() = user_id);
 // create policy "Users can delete their own tasks" on tasks for delete using (auth.uid() = user_id);
 //
-// -- Notes table (camelCase to match code)
+// -- Notes table
 // create table notes (
 //   id uuid default gen_random_uuid() primary key,
 //   user_id uuid references auth.users(id) on delete cascade,
 //   title text,
 //   category text default 'General',
 //   content text,
-//   createdAt timestamptz default now(),
-//   updatedAt timestamptz default now()
+//   createdat timestamptz default now(),
+//   updatedat timestamptz default now()
 // );
 // alter table notes enable row level security;
 // create policy "Users can select their own notes" on notes for select using (auth.uid() = user_id);
