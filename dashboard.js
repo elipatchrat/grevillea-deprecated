@@ -445,7 +445,7 @@ document.addEventListener('DOMContentLoaded', async function() {
             .from('tasks')
             .select('*')
             .eq('user_id', user.id)
-            .order('created_at', { ascending: true });
+            .order('createdAt', { ascending: true });
         
         if (error) {
             console.error('Error loading tasks:', error);
@@ -774,7 +774,7 @@ document.addEventListener('DOMContentLoaded', async function() {
             .from('notes')
             .select('*')
             .eq('user_id', user.id)
-            .order('created_at', { ascending: true });
+            .order('createdAt', { ascending: true });
         
         if (error) {
             console.error('Error loading notes:', error);
