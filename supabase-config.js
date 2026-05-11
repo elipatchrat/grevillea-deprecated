@@ -1,8 +1,23 @@
-// SQL Schema:
-// create table profiles (id uuid primary key, fullname text, username text, avatar text, role text, discovery_source text, onboarding_completed boolean, created_at timestamptz, updated_at timestamptz);
+// SQL Schema (camelCase columns to match code):
+// -- Profiles table
+// create table profiles (
+//   id uuid default gen_random_uuid() primary key,
+//   user_id uuid references auth.users(id) on delete cascade unique,
+//   full_name text,
+//   nickname text,
+//   role text,
+//   study_style text,
+//   discovery_source text,
+//   onboarding_completed boolean default false,
+//   created_at timestamptz default now(),
+//   updated_at timestamptz default now()
+// );
 // alter table profiles enable row level security;
+// create policy "Users can select their own profile" on profiles for select using (auth.uid() = user_id);
+// create policy "Users can insert their own profile" on profiles for insert with check (auth.uid() = user_id);
+// create policy "Users can update their own profile" on profiles for update using (auth.uid() = user_id);
 //
-// -- Tasks table
+// -- Tasks table (camelCase to match code)
 // create table tasks (
 //   id uuid default gen_random_uuid() primary key,
 //   user_id uuid references auth.users(id) on delete cascade,
@@ -10,36 +25,44 @@
 //   completed boolean default false,
 //   tag text default 'General',
 //   date text,
-//   created_at timestamptz default now(),
-//   updated_at timestamptz default now()
+//   createdAt timestamptz default now(),
+//   updatedAt timestamptz default now()
 // );
 // alter table tasks enable row level security;
-// create policy "Users can only access their own tasks" on tasks for all using (auth.uid() = user_id);
+// create policy "Users can select their own tasks" on tasks for select using (auth.uid() = user_id);
+// create policy "Users can insert their own tasks" on tasks for insert with check (auth.uid() = user_id);
+// create policy "Users can update their own tasks" on tasks for update using (auth.uid() = user_id);
+// create policy "Users can delete their own tasks" on tasks for delete using (auth.uid() = user_id);
 //
-// -- Notes table
+// -- Notes table (camelCase to match code)
 // create table notes (
 //   id uuid default gen_random_uuid() primary key,
 //   user_id uuid references auth.users(id) on delete cascade,
 //   title text,
 //   category text default 'General',
 //   content text,
-//   created_at timestamptz default now(),
-//   updated_at timestamptz default now()
+//   createdAt timestamptz default now(),
+//   updatedAt timestamptz default now()
 // );
 // alter table notes enable row level security;
-// create policy "Users can only access their own notes" on notes for all using (auth.uid() = user_id);
+// create policy "Users can select their own notes" on notes for select using (auth.uid() = user_id);
+// create policy "Users can insert their own notes" on notes for insert with check (auth.uid() = user_id);
+// create policy "Users can update their own notes" on notes for update using (auth.uid() = user_id);
+// create policy "Users can delete their own notes" on notes for delete using (auth.uid() = user_id);
 //
 // -- User stats table (study time & streak)
 // create table user_stats (
 //   id uuid default gen_random_uuid() primary key,
-//   user_id uuid references auth.users(id) on delete cascade,
+//   user_id uuid references auth.users(id) on delete cascade unique,
 //   study_time_today integer default 0,
 //   current_streak integer default 0,
 //   last_study_date date,
 //   updated_at timestamptz default now()
 // );
 // alter table user_stats enable row level security;
-// create policy "Users can only access their own stats" on user_stats for all using (auth.uid() = user_id);
+// create policy "Users can select their own stats" on user_stats for select using (auth.uid() = user_id);
+// create policy "Users can insert their own stats" on user_stats for insert with check (auth.uid() = user_id);
+// create policy "Users can update their own stats" on user_stats for update using (auth.uid() = user_id);
 
 const SUPABASE_URL = 'https://asylgnxgjyubixorsfmg.supabase.co';
 const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFzeWxnbnhnanl1Yml4b3JzZm1nIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzYyNDA0MjUsImV4cCI6MjA5MTgxNjQyNX0.gRFw2KL8yUtJ74OUUcUKREKAj1DoXep_gmwr5ZfOYOI';
