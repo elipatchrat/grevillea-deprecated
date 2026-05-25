@@ -32,7 +32,7 @@
             </div>
             
             <nav class="sidebar-nav">
-                <a href="#" class="nav-item active" data-section="dashboard">
+                <a href="dashboard.html" class="nav-item active">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <rect x="3" y="3" width="7" height="7"></rect>
                         <rect x="14" y="3" width="7" height="7"></rect>
@@ -41,7 +41,7 @@
                     </svg>
                     Dashboard
                 </a>
-                <a href="#" class="nav-item" data-section="notes">
+                <a href="notes.html" class="nav-item">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
                         <polyline points="14 2 14 8 20 8"></polyline>
@@ -50,14 +50,14 @@
                     </svg>
                     Notes
                 </a>
-                <a href="#" class="nav-item" data-section="timer">
+                <a href="timer.html" class="nav-item">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <circle cx="12" cy="12" r="10"></circle>
                         <polyline points="12 6 12 12 16 14"></polyline>
                     </svg>
                     Study Timer
                 </a>
-                <a href="#" class="nav-item" data-section="calendar">
+                <a href="calendar.html" class="nav-item">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
                         <line x1="16" y1="2" x2="16" y2="6"></line>
@@ -66,7 +66,7 @@
                     </svg>
                     Calendar
                 </a>
-                <a href="#" class="nav-item" data-section="messages">
+                <a href="messages.html" class="nav-item">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
                     </svg>
@@ -75,7 +75,7 @@
             </nav>
 
             <div class="sidebar-footer">
-                <a href="#" class="nav-item">
+                <a href="settings.html" class="nav-item">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <circle cx="12" cy="12" r="3"></circle>
                         <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
@@ -191,7 +191,7 @@
                         <div class="card notes-card">
                             <div class="card-header">
                                 <h3>Recent Notes</h3>
-                                <a href="#" class="link" onclick="switchSection('notes')">View all</a>
+                                <a href="notes.html" class="link">View all</a>
                             </div>
                             <div class="notes-list" id="notes-list">
                                 <div class="empty-state">
@@ -248,113 +248,12 @@
                     </div>
                 </div>
             </section>
-
-            <!-- Notes Section -->
-            <section class="content-section" id="notes-section">
-                <div class="container">
-                    <h2 class="section-title">Notes</h2>
-                    <div class="notes-layout">
-                        <!-- Sidebar -->
-                        <div class="notes-sidebar">
-                            <div class="notes-sidebar-header">
-                                <h3>My Notes</h3>
-                                <button class="btn-add-note" id="btn-add-note">+ New Note</button>
-                            </div>
-                            <div class="notes-sidebar-list" id="notes-sidebar-list">
-                                <!-- Notes list populated by JS -->
-                            </div>
-                        </div>
-
-                        <!-- Editor -->
-                        <div class="notes-editor">
-                            <div class="notes-editor-header">
-                                <input type="text" class="note-title-input" id="note-title-input" placeholder="Note Title">
-                                <div class="note-meta">
-                                    <input type="text" class="note-category-input" id="note-category-input" placeholder="Category">
-                                    <span class="note-date" id="note-date"></span>
-                                </div>
-                            </div>
-                            <textarea class="note-content" id="note-content" placeholder="Start writing your note here..."></textarea>
-                            <div class="notes-editor-footer">
-                                <button class="btn-save-note" id="btn-save-note">Save Note</button>
-                                <button class="btn-delete-note" id="btn-delete-note">Delete</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Timer Section -->
-            <section class="content-section" id="timer-section">
-                <div class="container">
-                    <h2 class="section-title">Study Timer</h2>
-                    <div class="timer-full">
-                        <div class="timer-display-large">
-                            <span class="timer-time-large" id="timer-display-large">25:00</span>
-                            <span class="timer-label-large">Pomodoro Timer</span>
-                        </div>
-                        <div class="timer-controls-large">
-                            <button class="btn-timer-large primary" id="start-timer-large">Start</button>
-                            <button class="btn-timer-large" id="pause-timer-large">Pause</button>
-                            <button class="btn-timer-large" id="reset-timer-large">Reset</button>
-                        </div>
-                        <div class="timer-stats">
-                            <div class="timer-stat">
-                                <span class="timer-stat-value" id="study-time-large">0h 00m</span>
-                                <span class="timer-stat-label">Study Time Today</span>
-                            </div>
-                            <div class="timer-stat">
-                                <span class="timer-stat-value" id="streak-large">0</span>
-                                <span class="timer-stat-label">Day Streak</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Calendar Section -->
-            <section class="content-section" id="calendar-section">
-                <div class="container">
-                    <h2 class="section-title">Calendar</h2>
-                    <div class="calendar-full">
-                        <div class="calendar-header-full">
-                            <h3 id="calendar-month-full">Month</h3>
-                            <div class="calendar-nav">
-                                <button class="btn-icon" id="prev-month-full">&lt;</button>
-                                <button class="btn-icon" id="next-month-full">&gt;</button>
-                            </div>
-                        </div>
-                        <div class="calendar-grid-full">
-                            <div class="calendar-day-header">Sun</div>
-                            <div class="calendar-day-header">Mon</div>
-                            <div class="calendar-day-header">Tue</div>
-                            <div class="calendar-day-header">Wed</div>
-                            <div class="calendar-day-header">Thu</div>
-                            <div class="calendar-day-header">Fri</div>
-                            <div class="calendar-day-header">Sat</div>
-                        </div>
-                        <div class="calendar-grid-full" id="calendar-days-full">
-                            <!-- Days will be generated by JavaScript -->
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Messages Section -->
-            <section class="content-section" id="messages-section">
-                <div class="container">
-                    <h2 class="section-title">Messages</h2>
-                    <div class="empty-state-large">
-                        <p>Messages feature coming soon!</p>
-                    </div>
-                </div>
-            </section>
         </main>
 
         <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
-        <script src="supabase-config.js?v=5"></script>
-        <script src="auth.js?v=5"></script>
-        <script src="dashboard.js?v=5"></script>
+        <script src="supabase-config.js?v=6"></script>
+        <script src="auth.js?v=6"></script>
+        <script src="dashboard.js?v=6"></script>
         <script>
             // Handle OAuth redirect and sync session
             document.addEventListener('DOMContentLoaded', async function() {

@@ -4,14 +4,6 @@
     background: var(--background);
 }
 
-.content-section {
-    display: none;
-}
-
-.content-section.active {
-    display: block;
-}
-
 .sidebar {
     width: 240px;
     background: white;
