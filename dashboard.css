@@ -5,78 +5,83 @@
 }
 
 .sidebar {
-    width: 240px;
-    background: white;
+    width: 260px;
+    background: linear-gradient(180deg, #ffffff 0%, var(--background) 100%);
     border-right: 1px solid var(--border);
     display: flex;
     flex-direction: column;
-    padding: 20px 0;
+    padding: 24px 0;
     position: fixed;
     height: 100vh;
+    box-shadow: 2px 0 12px rgba(0, 0, 0, 0.05);
 }
 
 .sidebar-brand {
     display: flex;
     align-items: center;
     gap: 12px;
-    padding: 0 20px 30px;
-    border-bottom: 1px solid var(--border);
-    margin-bottom: 20px;
+    padding: 0 24px 32px;
+    border-bottom: 2px solid var(--border);
+    margin-bottom: 24px;
 }
 
 .sidebar-brand .logo.small {
-    width: 36px;
-    height: 36px;
-    font-size: 18px;
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+    color: white;
 }
 
 .sidebar-brand span {
-    font-size: 18px;
+    font-size: 20px;
     font-weight: 700;
     color: var(--text);
 }
 
 .sidebar-nav {
     flex: 1;
-    padding: 0 12px;
+    padding: 0 16px;
     display: flex;
     flex-direction: column;
-    gap: 4px;
+    gap: 6px;
 }
 
 .nav-item {
     display: flex;
     align-items: center;
     gap: 12px;
-    padding: 12px 16px;
-    border-radius: 8px;
+    padding: 14px 18px;
+    border-radius: 12px;
     color: var(--text-muted);
     text-decoration: none;
-    font-size: 14px;
+    font-size: 15px;
     font-weight: 500;
-    transition: all 0.2s ease;
+    transition: all 0.25s ease;
 }
 
 .nav-item:hover {
-    background: var(--background);
-    color: var(--text);
+    background: var(--background-alt);
+    color: var(--primary);
+    transform: translateX(4px);
 }
 
 .nav-item.active {
-    background: var(--primary);
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
     color: white;
+    box-shadow: 0 4px 12px rgba(192, 57, 43, 0.3);
 }
 
 .sidebar-footer {
-    padding: 20px 12px 0;
-    border-top: 1px solid var(--border);
-    margin-top: 20px;
+    padding: 24px 16px 0;
+    border-top: 2px solid var(--border);
+    margin-top: 24px;
 }
 
 .main-content {
     flex: 1;
-    margin-left: 240px;
-    padding: 24px 32px;
+    margin-left: 260px;
+    padding: 32px 40px;
 }
 
 .top-bar {
@@ -144,41 +149,48 @@
 
 .stat-card {
     background: white;
-    border-radius: 12px;
-    padding: 20px;
+    border-radius: 16px;
+    padding: 24px;
     display: flex;
     align-items: center;
     gap: 16px;
     box-shadow: var(--shadow);
+    border: 1px solid var(--border);
+    transition: all 0.3s ease;
+}
+
+.stat-card:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-2px);
 }
 
 .stat-icon {
-    width: 48px;
-    height: 48px;
-    border-radius: 10px;
+    width: 52px;
+    height: 52px;
+    border-radius: 12px;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
 .stat-icon.blue {
-    background: #dbeafe;
-    color: #2563eb;
+    background: linear-gradient(135deg, #f5e6d3 0%, #e8d4c0 100%);
+    color: var(--primary);
 }
 
 .stat-icon.green {
-    background: #dcfce7;
-    color: #16a34a;
+    background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%);
+    color: var(--secondary);
 }
 
 .stat-icon.orange {
-    background: #ffedd5;
-    color: #ea580c;
+    background: linear-gradient(135deg, #fff3cd 0%, #ffe69c 100%);
+    color: var(--accent);
 }
 
 .stat-icon.purple {
-    background: #f3e8ff;
-    color: #7c3aed;
+    background: linear-gradient(135deg, #f8d7da 0%, #f5c6cb 100%);
+    color: var(--primary-dark);
 }
 
 .stat-info {
@@ -206,9 +218,15 @@
 
 .card {
     background: white;
-    border-radius: 12px;
-    padding: 24px;
+    border-radius: 16px;
+    padding: 28px;
     box-shadow: var(--shadow);
+    border: 1px solid var(--border);
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    box-shadow: var(--shadow-lg);
 }
 
 .card-header {
@@ -283,13 +301,13 @@
 }
 
 .task-tag.urgent {
-    background: #fee2e2;
-    color: #dc2626;
+    background: #f8d7da;
+    color: var(--primary);
 }
 
 .task-tag.meeting {
-    background: #dbeafe;
-    color: #2563eb;
+    background: #d4edda;
+    color: var(--secondary);
 }
 
 .btn-add {
