@@ -32,7 +32,7 @@
             </div>
             
             <nav class="sidebar-nav">
-                <a href="#" class="nav-item active">
+                <a href="#" class="nav-item active" data-section="dashboard">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <rect x="3" y="3" width="7" height="7"></rect>
                         <rect x="14" y="3" width="7" height="7"></rect>
@@ -41,7 +41,7 @@
                     </svg>
                     Dashboard
                 </a>
-                <a href="#" class="nav-item">
+                <a href="#" class="nav-item" data-section="notes">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
                         <polyline points="14 2 14 8 20 8"></polyline>
@@ -50,14 +50,14 @@
                     </svg>
                     Notes
                 </a>
-                <a href="#" class="nav-item">
+                <a href="#" class="nav-item" data-section="timer">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <circle cx="12" cy="12" r="10"></circle>
                         <polyline points="12 6 12 12 16 14"></polyline>
                     </svg>
                     Study Timer
                 </a>
-                <a href="#" class="nav-item">
+                <a href="#" class="nav-item" data-section="calendar">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
                         <line x1="16" y1="2" x2="16" y2="6"></line>
@@ -66,7 +66,7 @@
                     </svg>
                     Calendar
                 </a>
-                <a href="#" class="nav-item">
+                <a href="#" class="nav-item" data-section="messages">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
                     </svg>
@@ -115,139 +115,142 @@
                 </div>
             </header>
 
-            <div class="dashboard-content">
-                <div class="stats-grid">
-                    <div class="stat-card">
-                        <div class="stat-icon blue">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <circle cx="12" cy="12" r="10"></circle>
-                                <polyline points="12 6 12 12 16 14"></polyline>
-                            </svg>
-                        </div>
-                        <div class="stat-info">
-                            <span class="stat-value" id="study-time">0h 00m</span>
-                            <span class="stat-label">Study Time This Week</span>
-                        </div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-icon green">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                                <polyline points="14 2 14 8 20 8"></polyline>
-                            </svg>
-                        </div>
-                        <div class="stat-info">
-                            <span class="stat-value" id="notes-count">0</span>
-                            <span class="stat-label">Notes Created</span>
-                        </div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-icon orange">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-                                <line x1="16" y1="2" x2="16" y2="6"></line>
-                                <line x1="8" y1="2" x2="8" y2="6"></line>
-                                <line x1="3" y1="10" x2="21" y2="10"></line>
-                            </svg>
-                        </div>
-                        <div class="stat-info">
-                            <span class="stat-value" id="tasks-count">0</span>
-                            <span class="stat-label">Upcoming Tasks</span>
-                        </div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-icon purple">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
-                            </svg>
-                        </div>
-                        <div class="stat-info">
-                            <span class="stat-value" id="streak-count">0</span>
-                            <span class="stat-label">Day Streak</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="dashboard-grid">
-                    <div class="card tasks-card">
-                        <div class="card-header">
-                            <h3>Tasks</h3>
-                            <span id="task-count-display">0 pending</span>
-                        </div>
-                        <div class="task-list" id="task-list">
-                            <div class="empty-state">
-                                <p>No tasks yet. Add your first task below!</p>
+            <!-- Dashboard Section -->
+            <section class="content-section active" id="dashboard-section">
+                <div class="dashboard-content">
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-icon blue">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <polyline points="12 6 12 12 16 14"></polyline>
+                                </svg>
+                            </div>
+                            <div class="stat-info">
+                                <span class="stat-value" id="study-time">0h 00m</span>
+                                <span class="stat-label">Study Time This Week</span>
                             </div>
                         </div>
-                        <div class="task-input-row">
-                            <input type="text" id="new-task-input" placeholder="Enter task name..." class="task-input">
-                            <input type="text" id="new-task-date" placeholder="Due date (DD/MM/YY)" class="task-date-input" value="">
-                            <button id="add-task-btn" class="btn-add-inline">Add</button>
+                        <div class="stat-card">
+                            <div class="stat-icon green">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                    <polyline points="14 2 14 8 20 8"></polyline>
+                                </svg>
+                            </div>
+                            <div class="stat-info">
+                                <span class="stat-value" id="notes-count">0</span>
+                                <span class="stat-label">Notes Created</span>
+                            </div>
                         </div>
-                    </div>
-
-                    <div class="card notes-card">
-                        <div class="card-header">
-                            <h3>Recent Notes</h3>
-                            <a href="#" class="link">View all</a>
+                        <div class="stat-card">
+                            <div class="stat-icon orange">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                                    <line x1="16" y1="2" x2="16" y2="6"></line>
+                                    <line x1="8" y1="2" x2="8" y2="6"></line>
+                                    <line x1="3" y1="10" x2="21" y2="10"></line>
+                                </svg>
+                            </div>
+                            <div class="stat-info">
+                                <span class="stat-value" id="tasks-count">0</span>
+                                <span class="stat-label">Upcoming Tasks</span>
+                            </div>
                         </div>
-                        <div class="notes-list" id="notes-list">
-                            <div class="empty-state">
-                                <p>No notes yet. Create your first study note!</p>
+                        <div class="stat-card">
+                            <div class="stat-icon purple">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                                </svg>
+                            </div>
+                            <div class="stat-info">
+                                <span class="stat-value" id="streak-count">0</span>
+                                <span class="stat-label">Day Streak</span>
                             </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="dashboard-grid">
-                    <div class="card study-card">
-                        <div class="card-header">
-                            <h3>Study Session</h3>
-                        </div>
-                        <div class="timer-display">
-                            <span class="timer-time" id="timer-display">25:00</span>
-                            <span class="timer-label">Pomodoro Timer</span>
-                        </div>
-                        <div class="timer-controls">
-                            <button class="btn-timer primary">Start</button>
-                            <button class="btn-timer">Reset</button>
-                        </div>
-                    </div>
-
-                    <div class="card calendar-card">
-                        <div class="card-header">
-                            <h3 id="calendar-month">Month</h3>
-                            <div class="calendar-nav">
-                                <button class="btn-icon" id="prev-month">&lt;</button>
-                                <button class="btn-icon" id="next-month">&gt;</button>
+                    <div class="dashboard-grid">
+                        <div class="card tasks-card">
+                            <div class="card-header">
+                                <h3>Tasks</h3>
+                                <span id="task-count-display">0 pending</span>
                             </div>
-                        </div>
-                        <div class="calendar-grid">
-                            <div class="calendar-day-header">Sun</div>
-                            <div class="calendar-day-header">Mon</div>
-                            <div class="calendar-day-header">Tue</div>
-                            <div class="calendar-day-header">Wed</div>
-                            <div class="calendar-day-header">Thu</div>
-                            <div class="calendar-day-header">Fri</div>
-                            <div class="calendar-day-header">Sat</div>
-                        </div>
-                        <div class="calendar-grid" id="calendar-days">
-                            <!-- Days will be generated by JavaScript -->
-                        </div>
-                        <div class="calendar-tasks" id="calendar-tasks">
-                            <h4>Tasks for <span id="selected-date">today</span></h4>
-                            <div id="day-tasks-list">
+                            <div class="task-list" id="task-list">
                                 <div class="empty-state">
-                                    <p>No tasks for this date.</p>
+                                    <p>No tasks yet. Add your first task below!</p>
+                                </div>
+                            </div>
+                            <div class="task-input-row">
+                                <input type="text" id="new-task-input" placeholder="Enter task name..." class="task-input">
+                                <input type="text" id="new-task-date" placeholder="Due date (DD/MM/YY)" class="task-date-input" value="">
+                                <button id="add-task-btn" class="btn-add-inline">Add</button>
+                            </div>
+                        </div>
+
+                        <div class="card notes-card">
+                            <div class="card-header">
+                                <h3>Recent Notes</h3>
+                                <a href="#" class="link" onclick="switchSection('notes')">View all</a>
+                            </div>
+                            <div class="notes-list" id="notes-list">
+                                <div class="empty-state">
+                                    <p>No notes yet. Create your first study note!</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="dashboard-grid">
+                        <div class="card study-card">
+                            <div class="card-header">
+                                <h3>Study Session</h3>
+                            </div>
+                            <div class="timer-display">
+                                <span class="timer-time" id="timer-display">25:00</span>
+                                <span class="timer-label">Pomodoro Timer</span>
+                            </div>
+                            <div class="timer-controls">
+                                <button class="btn-timer primary">Start</button>
+                                <button class="btn-timer">Reset</button>
+                            </div>
+                        </div>
+
+                        <div class="card calendar-card">
+                            <div class="card-header">
+                                <h3 id="calendar-month">Month</h3>
+                                <div class="calendar-nav">
+                                    <button class="btn-icon" id="prev-month">&lt;</button>
+                                    <button class="btn-icon" id="next-month">&gt;</button>
+                                </div>
+                            </div>
+                            <div class="calendar-grid">
+                                <div class="calendar-day-header">Sun</div>
+                                <div class="calendar-day-header">Mon</div>
+                                <div class="calendar-day-header">Tue</div>
+                                <div class="calendar-day-header">Wed</div>
+                                <div class="calendar-day-header">Thu</div>
+                                <div class="calendar-day-header">Fri</div>
+                                <div class="calendar-day-header">Sat</div>
+                            </div>
+                            <div class="calendar-grid" id="calendar-days">
+                                <!-- Days will be generated by JavaScript -->
+                            </div>
+                            <div class="calendar-tasks" id="calendar-tasks">
+                                <h4>Tasks for <span id="selected-date">today</span></h4>
+                                <div id="day-tasks-list">
+                                    <div class="empty-state">
+                                        <p>No tasks for this date.</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </section>
 
             <!-- Notes Section -->
-            <section class="notes-section" id="notes-section">
+            <section class="content-section" id="notes-section">
                 <div class="container">
                     <h2 class="section-title">Notes</h2>
                     <div class="notes-layout">
@@ -280,12 +283,78 @@
                     </div>
                 </div>
             </section>
+
+            <!-- Timer Section -->
+            <section class="content-section" id="timer-section">
+                <div class="container">
+                    <h2 class="section-title">Study Timer</h2>
+                    <div class="timer-full">
+                        <div class="timer-display-large">
+                            <span class="timer-time-large" id="timer-display-large">25:00</span>
+                            <span class="timer-label-large">Pomodoro Timer</span>
+                        </div>
+                        <div class="timer-controls-large">
+                            <button class="btn-timer-large primary" id="start-timer-large">Start</button>
+                            <button class="btn-timer-large" id="pause-timer-large">Pause</button>
+                            <button class="btn-timer-large" id="reset-timer-large">Reset</button>
+                        </div>
+                        <div class="timer-stats">
+                            <div class="timer-stat">
+                                <span class="timer-stat-value" id="study-time-large">0h 00m</span>
+                                <span class="timer-stat-label">Study Time Today</span>
+                            </div>
+                            <div class="timer-stat">
+                                <span class="timer-stat-value" id="streak-large">0</span>
+                                <span class="timer-stat-label">Day Streak</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Calendar Section -->
+            <section class="content-section" id="calendar-section">
+                <div class="container">
+                    <h2 class="section-title">Calendar</h2>
+                    <div class="calendar-full">
+                        <div class="calendar-header-full">
+                            <h3 id="calendar-month-full">Month</h3>
+                            <div class="calendar-nav">
+                                <button class="btn-icon" id="prev-month-full">&lt;</button>
+                                <button class="btn-icon" id="next-month-full">&gt;</button>
+                            </div>
+                        </div>
+                        <div class="calendar-grid-full">
+                            <div class="calendar-day-header">Sun</div>
+                            <div class="calendar-day-header">Mon</div>
+                            <div class="calendar-day-header">Tue</div>
+                            <div class="calendar-day-header">Wed</div>
+                            <div class="calendar-day-header">Thu</div>
+                            <div class="calendar-day-header">Fri</div>
+                            <div class="calendar-day-header">Sat</div>
+                        </div>
+                        <div class="calendar-grid-full" id="calendar-days-full">
+                            <!-- Days will be generated by JavaScript -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Messages Section -->
+            <section class="content-section" id="messages-section">
+                <div class="container">
+                    <h2 class="section-title">Messages</h2>
+                    <div class="empty-state-large">
+                        <p>Messages feature coming soon!</p>
+                    </div>
+                </div>
+            </section>
         </main>
 
         <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
-        <script src="supabase-config.js?v=4"></script>
-        <script src="auth.js?v=4"></script>
-        <script src="dashboard.js?v=4"></script>
+        <script src="supabase-config.js?v=5"></script>
+        <script src="auth.js?v=5"></script>
+        <script src="dashboard.js?v=5"></script>
         <script>
             // Handle OAuth redirect and sync session
             document.addEventListener('DOMContentLoaded', async function() {
